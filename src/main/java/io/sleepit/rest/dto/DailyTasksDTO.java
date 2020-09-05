@@ -3,6 +3,7 @@ package io.sleepit.rest.dto;
 import io.sleepit.tasks.model.PersistedTask;
 import io.sleepit.tasks.model.amount.Amount;
 
+import java.util.Comparator;
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
@@ -14,6 +15,7 @@ public class DailyTasksDTO {
     public DailyTasksDTO(final List<PersistedTask> tasks) {
         this.dailyTasks = Objects.requireNonNull(tasks, "tasks can not be null")
                 .stream().map(this::toDailyTaskDto)
+                .sorted(Comparator.comparingInt(DailyTaskDTO::getId))
                 .collect(Collectors.toList());
     }
 

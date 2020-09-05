@@ -41,4 +41,36 @@ public class DefaultPersistedTask implements PersistedTask {
         return delegate.status();
     }
 
+    public static Builder toBuilder(final PersistedTask task) {
+        return new Builder(task);
+    }
+
+    public static final class Builder {
+
+        private final PersistedTask task;
+        private Status status;
+
+        private Builder(final PersistedTask task) {
+            this.task = task;
+        }
+
+        public Builder withStatus(final Status status) {
+            this.status = status;
+            return this;
+        }
+
+        public PersistedTask build() {
+            return new DefaultPersistedTask(
+                    task.id(),
+                    new DefaultTask(
+                            task.skill(),
+                            task.userId(),
+                            task.amount().orElse(null),
+                            this.status == null ? task.status() : this.status
+                    )
+            );
+        }
+
+    }
+
 }

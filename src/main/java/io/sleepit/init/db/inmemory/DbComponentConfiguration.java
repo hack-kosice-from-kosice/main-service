@@ -15,12 +15,12 @@ import org.springframework.context.annotation.Configuration;
 public class DbComponentConfiguration {
 
     @Bean
-    public SkillsInMemoryRepository skillsDb() {
+    public SkillsInMemoryRepository skillsRepository() {
         return new SkillsInMemoryRepository();
     }
 
     @Bean
-    public TasksInMemoryRepository tasksDb() {
+    public TasksInMemoryRepository tasksRepository() {
         return new TasksInMemoryRepository();
     }
 
