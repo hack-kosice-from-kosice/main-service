@@ -18,6 +18,11 @@ public class DefaultPersistedSkill implements PersistedSkill {
     }
 
     @Override
+    public Code code() {
+        return delegate.code();
+    }
+
+    @Override
     public String name() {
         return delegate.name();
     }
