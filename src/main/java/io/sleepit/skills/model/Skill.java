@@ -1,4 +1,4 @@
-package io.sleepit.model.skill;
+package io.sleepit.skills.model;
 
 public interface Skill {
 
@@ -8,7 +8,7 @@ public interface Skill {
 
     String imageUrl();
 
-    public enum Code {
+    enum Code {
         WATER, NO_COFFEE, NO_TV_PC_SMARTPHONE, SUN, EXERCISE
     }
 

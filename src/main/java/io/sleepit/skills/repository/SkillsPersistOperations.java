@@ -1,7 +1,7 @@
 package io.sleepit.skills.repository;
 
-import io.sleepit.model.skill.PersistedSkill;
-import io.sleepit.model.skill.Skill;
+import io.sleepit.skills.model.PersistedSkill;
+import io.sleepit.skills.model.Skill;
 
 import java.util.Arrays;
 import java.util.List;

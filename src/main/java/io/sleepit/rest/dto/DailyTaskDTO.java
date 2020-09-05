@@ -1,4 +1,4 @@
-package io.sleepit.dailytasks.dto;
+package io.sleepit.rest.dto;
 
 import java.util.Objects;
 

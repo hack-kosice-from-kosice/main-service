@@ -1,8 +1,7 @@
-package io.sleepit.dailytasks.dto;
+package io.sleepit.rest.dto;
 
-import io.sleepit.model.skill.PersistedSkill;
-import io.sleepit.model.task.amount.Amount;
-import io.sleepit.model.task.PersistedTask;
+import io.sleepit.tasks.model.PersistedTask;
+import io.sleepit.tasks.model.amount.Amount;
 
 import java.util.List;
 import java.util.Objects;
@@ -25,17 +24,9 @@ public class DailyTasksDTO {
     private DailyTaskDTO toDailyTaskDto(final PersistedTask task) {
         return new DailyTaskDTO(
                 task.id(),
-                toSkillDto(task.skill()),
+                new SkillDTO(task.skill()),
                 task.amount().map(Amount::asHumanReadableString).orElse(""),
                 task.status().name()
-        );
-    }
-
-    private SkillDTO toSkillDto(final PersistedSkill skill) {
-        return new SkillDTO(
-                skill.id(),
-                skill.name(),
-                skill.imageUrl()
         );
     }
 

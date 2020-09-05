@@ -1,4 +1,4 @@
-package io.sleepit.model.skill;
+package io.sleepit.skills.model;
 
 import java.util.Objects;
 

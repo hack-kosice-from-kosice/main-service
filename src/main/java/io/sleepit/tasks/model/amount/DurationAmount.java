@@ -1,4 +1,4 @@
-package io.sleepit.model.task.amount;
+package io.sleepit.tasks.model.amount;
 
 import java.math.BigDecimal;
 import java.time.Duration;

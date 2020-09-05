@@ -1,8 +1,8 @@
 package io.sleepit.init.db.inmemory;
 
-import io.sleepit.model.skill.DefaultPersistedSkill;
-import io.sleepit.model.skill.PersistedSkill;
-import io.sleepit.model.skill.Skill;
+import io.sleepit.skills.model.DefaultPersistedSkill;
+import io.sleepit.skills.model.PersistedSkill;
+import io.sleepit.skills.model.Skill;
 import io.sleepit.skills.repository.SkillsFetchOperations;
 import io.sleepit.skills.repository.SkillsPersistOperations;
 
@@ -16,6 +16,13 @@ public class SkillsInMemoryRepository implements SkillsFetchOperations, SkillsPe
 
     private final AtomicInteger idSeq = new AtomicInteger(1);
     private final List<PersistedSkill> skills = new ArrayList<>();
+
+    @Override
+    public Optional<PersistedSkill> findById(final Integer id) {
+        return skills.stream()
+                .filter(skill -> skill.id().equals(id))
+                .findFirst();
+    }
 
     @Override
     public Optional<PersistedSkill> findByCode(final Skill.Code code) {

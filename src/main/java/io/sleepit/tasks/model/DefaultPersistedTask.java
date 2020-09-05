@@ -1,7 +1,7 @@
-package io.sleepit.model.task;
+package io.sleepit.tasks.model;
 
-import io.sleepit.model.skill.PersistedSkill;
-import io.sleepit.model.task.amount.Amount;
+import io.sleepit.skills.model.PersistedSkill;
+import io.sleepit.tasks.model.amount.Amount;
 
 import java.util.Objects;
 import java.util.Optional;
@@ -19,6 +19,11 @@ public class DefaultPersistedTask implements PersistedTask {
     @Override
     public Integer id() {
         return this.id;
+    }
+
+    @Override
+    public Integer userId() {
+        return delegate.userId();
     }
 
     @Override

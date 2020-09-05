@@ -1,7 +1,7 @@
-package io.sleepit.model.task;
+package io.sleepit.tasks.model;
 
-import io.sleepit.model.skill.PersistedSkill;
-import io.sleepit.model.task.amount.Amount;
+import io.sleepit.skills.model.PersistedSkill;
+import io.sleepit.tasks.model.amount.Amount;
 
 import java.util.Objects;
 import java.util.Optional;
@@ -9,22 +9,25 @@ import java.util.Optional;
 public class DefaultTask implements Task {
 
     private final PersistedSkill skill;
+    private final Integer userId;
     private final Amount amount;
     private final Status status;
 
-    public DefaultTask(final PersistedSkill skill, final Amount amount, final Status status) {
+    public DefaultTask(final PersistedSkill skill, final Integer userId, final Amount amount, final Status status) {
         this.skill = Objects.requireNonNull(skill, "skill can not be null");
+        this.userId = Objects.requireNonNull(userId, "userId can not be null");
         this.amount = amount;
         this.status = Objects.requireNonNull(status, "status can not be null");
-    }
-
-    public DefaultTask(final PersistedSkill skill, final Status status) {
-        this(skill, null, status);
     }
 
     @Override
     public PersistedSkill skill() {
         return skill;
+    }
+
+    @Override
+    public Integer userId() {
+        return userId;
     }
 
     @Override
