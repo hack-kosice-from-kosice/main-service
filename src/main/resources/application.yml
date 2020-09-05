@@ -1,1 +1,17 @@
-
+sleep-it:
+  skills:
+    WATER:
+      name: "Water"
+      image-url: "https://media-public.canva.com/MADpjrmJn8k/1/screen.svg"
+    NO_TV_PC_SMARTPHONE:
+      name: "NoTvOrPcOrSmartphone"
+      image-url: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a8/No-TV.svg/1200px-No-TV.svg.png"
+    EXERCISE:
+      name: "Exercise"
+      image-url: "https://media-public.canva.com/MADrPCb9Hik/1/screen.svg"
+    SUN:
+      name: "Sun"
+      image-url: "https://media-public.canva.com/MADZ4yTWnmA/1/screen.svg"
+    NO_COFFEE:
+      name: "No Coffee"
+      image-url: "https://image.flaticon.com/icons/png/512/2029/2029313.png"

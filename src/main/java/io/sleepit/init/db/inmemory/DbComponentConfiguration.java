@@ -1,7 +1,6 @@
 package io.sleepit.init.db.inmemory;
 
-import io.sleepit.skills.model.DefaultSkill;
-import io.sleepit.skills.model.Skill;
+import io.sleepit.init.configuration.SkillsConfiguration;
 import io.sleepit.skills.model.Skill.Code;
 import io.sleepit.skills.repository.SkillsFetchOperations;
 import io.sleepit.tasks.model.DefaultTask;
@@ -26,22 +25,13 @@ public class DbComponentConfiguration {
     }
 
     @Bean
-    public CommandLineRunner fillDbWithSkills(final SkillsInMemoryRepository skillsInMemoryRepository) {
-        return args -> {
-            final Skill drinkWaterSkill = new DefaultSkill(Code.WATER, "Water", "http://google.com");
-            final Skill dontWatchTvSkill = new DefaultSkill(Code.NO_TV_PC_SMARTPHONE, "NoTvOrPcOrSmartphone", "http://google.com");
-            final Skill bodybuildingSkill = new DefaultSkill(Code.EXERCISE, "Exercise", "http://google.com");
-            final Skill sunSkill = new DefaultSkill(Code.SUN, "Sun", "http://google.com");
-            final Skill coffeeSkill = new DefaultSkill(Code.NO_COFFEE, "No Coffee", "http://google.com");
+    public CommandLineRunner fillDbWithSkills(
+            final SkillsInMemoryRepository skillsInMemoryRepository,
+            final SkillsConfiguration skillsConfiguration) {
 
-            skillsInMemoryRepository.createAll(
-                    drinkWaterSkill,
-                    dontWatchTvSkill,
-                    bodybuildingSkill,
-                    coffeeSkill,
-                    sunSkill
-            );
-        };
+        return args -> skillsInMemoryRepository.createAll(
+                skillsConfiguration.getSkillsList()
+        );
     }
 
     @Bean
