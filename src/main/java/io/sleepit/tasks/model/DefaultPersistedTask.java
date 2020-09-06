@@ -41,6 +41,11 @@ public class DefaultPersistedTask implements PersistedTask {
         return delegate.status();
     }
 
+    @Override
+    public ValidityRange validityRange() {
+        return delegate.validityRange();
+    }
+
     public static Builder toBuilder(final PersistedTask task) {
         return new Builder(task);
     }
@@ -66,7 +71,8 @@ public class DefaultPersistedTask implements PersistedTask {
                             task.skill(),
                             task.userId(),
                             task.amount().orElse(null),
-                            this.status == null ? task.status() : this.status
+                            this.status == null ? task.status() : this.status,
+                            task.validityRange()
                     )
             );
         }

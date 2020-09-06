@@ -4,8 +4,9 @@ import io.sleepit.rest.dto.DailyTasksDTO;
 import io.sleepit.rest.dto.TaskActionDTO;
 import io.sleepit.tasks.model.PersistedTask;
 import io.sleepit.tasks.repository.TasksFetchOperations;
-import io.sleepit.tasks.service.MarkTaskAsAchievedAction;
-import io.sleepit.tasks.service.MarkTaskAsRejectedAction;
+import io.sleepit.tasks.service.dailytasks.ActualUserTasksRetriever;
+import io.sleepit.tasks.service.taskmarking.MarkTaskAsAchievedAction;
+import io.sleepit.tasks.service.taskmarking.MarkTaskAsRejectedAction;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -13,24 +14,25 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.Comparator;
 import java.util.Objects;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 @RestController
 public class DailyTasksController {
 
     private final TasksFetchOperations tasksFetchOperations;
+    private final ActualUserTasksRetriever actualUserTasksRetriever;
     private final MarkTaskAsAchievedAction markTaskAsAchievedAction;
     private final MarkTaskAsRejectedAction markTaskAsRejectedAction;
 
     public DailyTasksController(
             final TasksFetchOperations tasksFetchOperations,
+            final ActualUserTasksRetriever actualUserTasksRetriever,
             final MarkTaskAsAchievedAction markTaskAsAchievedAction,
             final MarkTaskAsRejectedAction markTaskAsRejectedAction) {
 
         this.tasksFetchOperations = Objects.requireNonNull(tasksFetchOperations, "tasksFetchOperations can not be null");
+        this.actualUserTasksRetriever = Objects.requireNonNull(actualUserTasksRetriever, "actualUserTasksRetriever can not be null");
         this.markTaskAsAchievedAction = Objects.requireNonNull(markTaskAsAchievedAction, "markTaskAsAchievedAction can not be null");
         this.markTaskAsRejectedAction = Objects.requireNonNull(markTaskAsRejectedAction, "markTaskAsRejectedAction can not be null");
     }
@@ -40,7 +42,7 @@ public class DailyTasksController {
             @PathVariable("userId") final Integer userId) {
 
         return new DailyTasksDTO(
-                tasksFetchOperations.findByUser(userId)
+                actualUserTasksRetriever.retrieveActualUserTasks(userId)
         );
     }
 

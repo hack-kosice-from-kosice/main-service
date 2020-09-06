@@ -6,6 +6,7 @@ import io.sleepit.tasks.model.Task;
 import io.sleepit.tasks.repository.TasksFetchOperations;
 import io.sleepit.tasks.repository.TasksPersistOperations;
 
+import java.time.ZonedDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -32,8 +33,10 @@ public class TasksInMemoryRepository implements TasksFetchOperations, TasksPersi
     }
 
     @Override
-    public List<PersistedTask> findAll() {
-        return tasks;
+    public List<PersistedTask> findValidTasksByUser(final ZonedDateTime validatedDate, final Integer userId) {
+        return findByUser(userId).stream()
+                .filter(task -> task.isValidFor(validatedDate))
+                .collect(Collectors.toList());
     }
 
     @Override

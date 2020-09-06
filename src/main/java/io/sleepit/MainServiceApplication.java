@@ -1,6 +1,6 @@
 package io.sleepit;
 
-import io.sleepit.init.configuration.SkillsConfiguration;
+import io.sleepit.init.configuration.properties.SkillsConfiguration;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;

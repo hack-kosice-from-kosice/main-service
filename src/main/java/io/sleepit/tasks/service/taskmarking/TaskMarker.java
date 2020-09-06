@@ -1,4 +1,4 @@
-package io.sleepit.tasks.service;
+package io.sleepit.tasks.service.taskmarking;
 
 import io.sleepit.tasks.model.DefaultPersistedTask;
 import io.sleepit.tasks.model.PersistedTask;

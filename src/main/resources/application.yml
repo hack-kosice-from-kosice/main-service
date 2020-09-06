@@ -2,16 +2,16 @@ sleep-it:
   skills:
     WATER:
       name: "Water"
-      image-url: "https://media-public.canva.com/MADpjrmJn8k/1/screen.svg"
+      image-url: "https://www.freepngimg.com/thumb/water_bottle/2-2-water-bottle-free-download-png-thumb.png"
     NO_TV_PC_SMARTPHONE:
       name: "NoTvOrPcOrSmartphone"
       image-url: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a8/No-TV.svg/1200px-No-TV.svg.png"
     EXERCISE:
       name: "Exercise"
-      image-url: "https://media-public.canva.com/MADrPCb9Hik/1/screen.svg"
+      image-url: "https://purepng.com/public/uploads/large/purepng.com-mario-runningmariofictional-charactervideo-gamefranchisenintendodesigner-1701528632608aaskj.png"
     SUN:
       name: "Sun"
-      image-url: "https://media-public.canva.com/MADZ4yTWnmA/1/screen.svg"
+      image-url: "https://www.freepngimg.com/thumb/sun/8-2-sun-png-file.png"
     NO_COFFEE:
       name: "No Coffee"
       image-url: "https://image.flaticon.com/icons/png/512/2029/2029313.png"

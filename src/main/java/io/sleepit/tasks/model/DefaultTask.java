@@ -12,12 +12,14 @@ public class DefaultTask implements Task {
     private final Integer userId;
     private final Amount amount;
     private final Status status;
+    private final ValidityRange validityRange;
 
-    public DefaultTask(final PersistedSkill skill, final Integer userId, final Amount amount, final Status status) {
+    public DefaultTask(final PersistedSkill skill, final Integer userId, final Amount amount, final Status status, final ValidityRange validityRange) {
         this.skill = Objects.requireNonNull(skill, "skill can not be null");
         this.userId = Objects.requireNonNull(userId, "userId can not be null");
         this.amount = amount;
         this.status = Objects.requireNonNull(status, "status can not be null");
+        this.validityRange = Objects.requireNonNull(validityRange, "validityRange can not be null");
     }
 
     @Override
@@ -38,6 +40,11 @@ public class DefaultTask implements Task {
     @Override
     public Status status() {
         return status;
+    }
+
+    @Override
+    public ValidityRange validityRange() {
+        return validityRange;
     }
 
 }

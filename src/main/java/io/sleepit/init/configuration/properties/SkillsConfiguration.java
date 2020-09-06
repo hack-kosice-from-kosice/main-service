@@ -1,4 +1,4 @@
-package io.sleepit.init.configuration;
+package io.sleepit.init.configuration.properties;
 
 import io.sleepit.skills.model.DefaultSkill;
 import io.sleepit.skills.model.Skill;
