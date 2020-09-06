@@ -21,4 +21,8 @@ public class SleepingStatisticDTO {
         return sleepingStatistic.date();
     }
 
+    public String getCategory() {
+        return sleepingStatistic.category().name();
+    }
+
 }
