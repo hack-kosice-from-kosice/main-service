@@ -1,4 +1,8 @@
 sleep-it:
+  tasks-generating:
+    number-of-required-tasks-per-day: 3
+    tasks-validity-for: 10s
+    tasks-validity-until-next-day-hours: 2
   skills:
     WATER:
       name: "Water"

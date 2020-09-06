@@ -1,5 +1,6 @@
 package io.sleepit.init.configuration.beans;
 
+import io.sleepit.init.configuration.properties.TaskGeneratingProperties;
 import io.sleepit.skills.repository.SkillsFetchOperations;
 import io.sleepit.tasks.repository.TasksFetchOperations;
 import io.sleepit.tasks.repository.TasksPersistOperations;
@@ -16,8 +17,11 @@ import org.springframework.context.annotation.Configuration;
 public class TasksRelatedConfiguration {
 
     @Bean
-    public RandomTasksGenerator randomTasksGenerator(final SkillsFetchOperations skillsFetchOperations) {
-        return new RandomTasksGenerator(skillsFetchOperations);
+    public RandomTasksGenerator randomTasksGenerator(
+            final SkillsFetchOperations skillsFetchOperations,
+            final TaskGeneratingProperties taskGeneratingProperties) {
+
+        return new RandomTasksGenerator(skillsFetchOperations, taskGeneratingProperties.getTasksValidityUntilNextDayHours(), taskGeneratingProperties.getTasksValidityFor());
     }
 
     @Bean
@@ -29,8 +33,8 @@ public class TasksRelatedConfiguration {
     }
 
     @Bean
-    public RequiredNumberOfDailyTasksDetector requiredNumberOfDailyTasksDetector() {
-        return new FixedRequiredNumberOfDailyTasksDetector(3);
+    public RequiredNumberOfDailyTasksDetector requiredNumberOfDailyTasksDetector(final TaskGeneratingProperties taskGeneratingProperties) {
+        return new FixedRequiredNumberOfDailyTasksDetector(taskGeneratingProperties.getNumberOfRequiredTasksPerDay());
     }
 
     @Bean

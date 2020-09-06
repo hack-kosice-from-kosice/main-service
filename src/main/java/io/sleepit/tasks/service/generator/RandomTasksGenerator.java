@@ -10,6 +10,7 @@ import io.sleepit.tasks.model.amount.Amount;
 import io.sleepit.tasks.model.amount.DurationAmount;
 import io.sleepit.tasks.model.amount.MilliliterAmount;
 
+import java.time.Duration;
 import java.time.ZonedDateTime;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -20,9 +21,16 @@ import java.util.stream.Collectors;
 public class RandomTasksGenerator implements TasksGenerator {
 
     private final SkillsFetchOperations skillsFetchOperations;
+    private final Integer tasksValidityUntilNextDayHours;
+    private final Duration tasksValidityFor;
 
-    public RandomTasksGenerator(final SkillsFetchOperations skillsFetchOperations) {
+    public RandomTasksGenerator(final SkillsFetchOperations skillsFetchOperations, final Integer tasksValidityUntilNextDayHours, final Duration tasksValidityFor) {
         this.skillsFetchOperations = Objects.requireNonNull(skillsFetchOperations, "skillsFetchOperations can not be null");
+        this.tasksValidityUntilNextDayHours = tasksValidityUntilNextDayHours;
+        this.tasksValidityFor = tasksValidityFor;
+        if (tasksValidityUntilNextDayHours == null && tasksValidityFor == null) {
+            throw new IllegalArgumentException("Both tasksValidityUntilNextDayHours and tasksValidityFor can not be null");
+        }
     }
 
     @Override
@@ -35,14 +43,23 @@ public class RandomTasksGenerator implements TasksGenerator {
                 .limit(numberOfTasks)
                 .map(skill -> {
                     final Amount amount = validAmountForSkill(skill);
+                    final ZonedDateTime validUntil = calculateValidUntil();
                     return new DefaultTask(
                             skill,
                             userId,
                             amount,
                             Status.ACTIVE,
-                            new ValidityRange(ZonedDateTime.now(), ZonedDateTime.now().plusDays(1))
+                            new ValidityRange(ZonedDateTime.now(), validUntil)
                     );
                 }).collect(Collectors.toList());
+    }
+
+    private ZonedDateTime calculateValidUntil() {
+        if (tasksValidityFor != null) {
+            return ZonedDateTime.now().plus(tasksValidityFor);
+        } else {
+            return ZonedDateTime.now().plusDays(1).withHour(tasksValidityUntilNextDayHours);
+        }
     }
 
     private Amount validAmountForSkill(final PersistedSkill skill) {
