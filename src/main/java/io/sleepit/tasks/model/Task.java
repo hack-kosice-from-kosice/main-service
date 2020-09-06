@@ -15,6 +15,8 @@ public interface Task {
 
     Optional<Amount> amount();
 
+    String description();
+
     Status status();
 
     ValidityRange validityRange();

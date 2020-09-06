@@ -1,6 +1,7 @@
 package io.sleepit.tasks.service.generator;
 
 import io.sleepit.skills.model.PersistedSkill;
+import io.sleepit.skills.model.Skill;
 import io.sleepit.skills.repository.SkillsFetchOperations;
 import io.sleepit.tasks.model.DefaultTask;
 import io.sleepit.tasks.model.Task;
@@ -43,15 +44,24 @@ public class RandomTasksGenerator implements TasksGenerator {
                 .limit(numberOfTasks)
                 .map(skill -> {
                     final Amount amount = validAmountForSkill(skill);
+                    final String description = validDescriptionForSkill(skill);
                     final ZonedDateTime validUntil = calculateValidUntil();
                     return new DefaultTask(
                             skill,
                             userId,
                             amount,
                             Status.ACTIVE,
-                            new ValidityRange(ZonedDateTime.now(), validUntil)
+                            new ValidityRange(ZonedDateTime.now(), validUntil),
+                            description
                     );
                 }).collect(Collectors.toList());
+    }
+
+    private String validDescriptionForSkill(final PersistedSkill skill) {
+        if (skill.code() == Skill.Code.NO_COFFEE) {
+            return "Don't drink any caffeinated drink after 2PM.";
+        }
+        return "";
     }
 
     private ZonedDateTime calculateValidUntil() {

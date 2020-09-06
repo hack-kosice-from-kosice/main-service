@@ -37,6 +37,11 @@ public class DefaultPersistedTask implements PersistedTask {
     }
 
     @Override
+    public String description() {
+        return delegate.description();
+    }
+
+    @Override
     public Status status() {
         return delegate.status();
     }
@@ -72,7 +77,8 @@ public class DefaultPersistedTask implements PersistedTask {
                             task.userId(),
                             task.amount().orElse(null),
                             this.status == null ? task.status() : this.status,
-                            task.validityRange()
+                            task.validityRange(),
+                            task.description()
                     )
             );
         }

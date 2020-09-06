@@ -28,7 +28,8 @@ public class DailyTasksDTO {
                 task.id(),
                 new SkillDTO(task.skill()),
                 task.amount().map(Amount::asHumanReadableString).orElse(""),
-                task.status().name()
+                task.status().name(),
+                task.description()
         );
     }
 

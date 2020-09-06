@@ -1,4 +1,4 @@
-package io.sleepit.rest.controller;
+package io.sleepit.rest.controller.handler;
 
 import org.springframework.core.annotation.Order;
 import org.springframework.http.ResponseEntity;
