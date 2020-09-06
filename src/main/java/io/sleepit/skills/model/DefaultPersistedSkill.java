@@ -1,5 +1,6 @@
 package io.sleepit.skills.model;
 
+import java.util.List;
 import java.util.Objects;
 
 public class DefaultPersistedSkill implements PersistedSkill {
@@ -30,6 +31,11 @@ public class DefaultPersistedSkill implements PersistedSkill {
     @Override
     public String imageUrl() {
         return delegate.imageUrl();
+    }
+
+    @Override
+    public List<Description> descriptions() {
+        return delegate.descriptions();
     }
 
 }

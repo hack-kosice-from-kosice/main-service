@@ -5,6 +5,7 @@ import io.sleepit.skills.model.Skill;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Map;
@@ -24,8 +25,15 @@ public class SkillsConfiguration {
     public List<Skill> getSkillsList() {
         return Collections.unmodifiableList(
                 skills.entrySet().stream()
-                        .map(entry -> new DefaultSkill(entry.getKey(), entry.getValue().getName(), entry.getValue().getImageUrl()))
-                        .collect(Collectors.toList())
+                        .map(entry -> new DefaultSkill(
+                                        entry.getKey(),
+                                        entry.getValue().getName(),
+                                        entry.getValue().getImageUrl(),
+                                        entry.getValue().getDescriptions().stream()
+                                                .map(description -> new Skill.Description(description.getDescription()))
+                                                .collect(Collectors.toList())
+                                )
+                        ).collect(Collectors.toList())
         );
     }
 
@@ -37,6 +45,7 @@ public class SkillsConfiguration {
 
         private String name;
         private String imageUrl;
+        private List<Description> descriptions = new ArrayList<>();
 
         public String getImageUrl() {
             return imageUrl;
@@ -52,6 +61,28 @@ public class SkillsConfiguration {
 
         public void setName(final String name) {
             this.name = name;
+        }
+
+        public List<Description> getDescriptions() {
+            return descriptions;
+        }
+
+        public void setDescriptions(final List<Description> descriptions) {
+            this.descriptions = descriptions;
+        }
+
+        private static class Description {
+
+            private String description;
+
+            public String getDescription() {
+                return description;
+            }
+
+            public void setDescription(final String description) {
+                this.description = description;
+            }
+
         }
 
     }

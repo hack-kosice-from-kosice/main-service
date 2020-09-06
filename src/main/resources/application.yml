@@ -1,21 +1,36 @@
 sleep-it:
   tasks-generating:
     number-of-required-tasks-per-day: 3
-    tasks-validity-for: 10s
+    tasks-validity-for: 30m
     tasks-validity-until-next-day-hours: 2
   skills:
     WATER:
-      name: "Water"
+      name: "Drink some water"
       image-url: "https://www.freepngimg.com/thumb/water_bottle/2-2-water-bottle-free-download-png-thumb.png"
+      descriptions:
+        - description: "Did you know that up to 60% of the human body is made of water? It just makes sense to replenish this water every time you have a chance. Not when you are thirsty, but every now and then during the whole day."
+        - description: "Generally, an adult male needs about 3 litres per day while an adult female needs about 2.2 litres per day. All of the water a person needs does not have to come from drinking liquids, as some of this water is contained in the food we eat."
+        - description: "Daily task: Start your day with a glass of water, you will start up your body and you will get the energy to get out of the bedroom, finally. Then, during the day, try to drink at least 2 litres of water and we guarantee you will feel better."
     NO_TV_PC_SMARTPHONE:
-      name: "NoTvOrPcOrSmartphone"
+      name: "Switch off TV"
       image-url: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a8/No-TV.svg/1200px-No-TV.svg.png"
+      descriptions:
+        - description: "If you want to improve the quality of your sleep today, stop staring at screens at night. Televisions, computers, smartphones...they all emit the blue portion of the spectrum. This blue light forces the body to produce day hormones like cortisol."
     EXERCISE:
-      name: "Exercise"
+      name: "Let's get physical"
       image-url: "https://purepng.com/public/uploads/large/purepng.com-mario-runningmariofictional-charactervideo-gamefranchisenintendodesigner-1701528632608aaskj.png"
+      descriptions:
+        - description: "If you want to be the healthiest version of yourself, you need to perform some kind of exercise. You don't have to be a bodybuilder to experience the benefits of the exercise. Simple walking can go a long way."
+        - description: "To get the most from the exercise, you need to be smart about it. Working out in the gym close to midnight and then falling into the bed asleep might sound good to you, but it is wrong for your body. The best possible time for exercise in the morning. It increases the production of the cortisol hormone. This is important for your energy level during the day. If you get it high in the morning, it will get low in the evening and then the magic happens. You'll sleep like a baby."
+        - description: "Daily task: Find an activity you will enjoy and do it for 30 minutes every day. The trick is staying motivated and having fun."
     SUN:
-      name: "Sun"
+      name: "Love the sunshine"
       image-url: "https://www.freepngimg.com/thumb/sun/8-2-sun-png-file.png"
+      descriptions:
+        - description: "A recent study showed that the employees sitting away from the windows, getting 173% less sunlight than others, slept on average a 46 minutes less than others. Also, they felt worse in the morning as opposed to their colleagues."
+        - description: "Our sleep cycles (the circadian timing system) is affected by the amount of sunlight falling on you during the day. The circadian timing systems is a 24h timer regulating the secretion of the hormones in your body, so it affects your digestion, immune system, blood pressure, energy etc."
+        - description: "Receiving sunlight increases the production of serotonin, the happy hormone. And how does this affect my sleep, you may ask. What if we told you the serotonin transforms into melanin in the evening. And the melanin is the sleep hormone. Do you see it? The more sunlight you get during the day, the faster you fall asleep and the better the quality of your sleep will be."
+        - description: "Daily task: Let's get some sunshine! The morning sunlight is the best for your serotonin level. Get at least 10 minutes of sunlight at around 8 AM to experience the best results!"
     NO_COFFEE:
       name: "No Coffee"
       image-url: "https://image.flaticon.com/icons/png/512/2029/2029313.png"
