@@ -16,6 +16,10 @@ public class SkillDTO {
         return skill.id();
     }
 
+    public String getCode() {
+        return skill.code().name();
+    }
+
     public String getName() {
         return skill.name();
     }
