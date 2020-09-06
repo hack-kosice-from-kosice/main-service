@@ -12,10 +12,12 @@ sleep-it:
         - description: "Generally, an adult male needs about 3 litres per day while an adult female needs about 2.2 litres per day. All of the water a person needs does not have to come from drinking liquids, as some of this water is contained in the food we eat."
         - description: "Daily task: Start your day with a glass of water, you will start up your body and you will get the energy to get out of the bedroom, finally. Then, during the day, try to drink at least 2 litres of water and we guarantee you will feel better."
     NO_TV_PC_SMARTPHONE:
-      name: "Switch off TV"
+      name: "No more screen today, please!"
       image-url: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a8/No-TV.svg/1200px-No-TV.svg.png"
       descriptions:
-        - description: "If you want to improve the quality of your sleep today, stop staring at screens at night. Televisions, computers, smartphones...they all emit the blue portion of the spectrum. This blue light forces the body to produce day hormones like cortisol."
+        - description: "If you want to improve the quality of your sleep today, stop staring at screens at night. Televisions, computers, smartphones...they all emit the blue portion of the spectrum. This blue light forces the body to produce day hormones like cortisol. This hormone shouldn't be produced at night as it prevents the body from falling asleep."
+        - description: "The screens are part of our life only for a few decades. We are not accustomed to working or facebooking at night instead of sleeping. This is a phenomenon of our new era."
+        - description: "Daily task: Try turning off the TV and stop looking into your smartphone/computer an hour before going to sleep. Instead, find something else you enjoy, like reading, talking to your significant other or writing a diary. It's completely up to you. Have fun!"
     EXERCISE:
       name: "Let's get physical"
       image-url: "https://purepng.com/public/uploads/large/purepng.com-mario-runningmariofictional-charactervideo-gamefranchisenintendodesigner-1701528632608aaskj.png"
@@ -32,5 +34,9 @@ sleep-it:
         - description: "Receiving sunlight increases the production of serotonin, the happy hormone. And how does this affect my sleep, you may ask. What if we told you the serotonin transforms into melanin in the evening. And the melanin is the sleep hormone. Do you see it? The more sunlight you get during the day, the faster you fall asleep and the better the quality of your sleep will be."
         - description: "Daily task: Let's get some sunshine! The morning sunlight is the best for your serotonin level. Get at least 10 minutes of sunlight at around 8 AM to experience the best results!"
     NO_COFFEE:
-      name: "No Coffee"
+      name: "Try to resist the tasty temptation"
       image-url: "https://image.flaticon.com/icons/png/512/2029/2029313.png"
+      descriptions:
+        - description: "Coffee is so good and tasty. We love it and you probably love it too. Or some other caffeinated drink, like green tea or maté. It has many positive impacts on your health and according to studies, it is better to drink coffee than not to drink."
+        - description: "But caffeine has also a dark side. The half-life of the caffeine is up to 8 hours. This basically means that 8 hours after you drink coffee, you may still have half of it in your blood. Now, imagine the effect of this on your sleep. You may fall asleep quickly despite the caffeine in your blood. But the quality of your sleep will never be so good as without this highly productive stimulant."
+        - description: "Daily task: Caffeinated drinks are okay, but you should follow some rules. The morning coffee is your best choice. If you really need a coffee afternoon too, make sure you drink it before 2 PM. Otherwise, your sleep quality might suffer."
