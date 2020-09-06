@@ -12,7 +12,7 @@ public interface TasksFetchOperations {
 
     List<PersistedTask> findByUser(final Integer userId);
 
-    List<PersistedTask> findValidTasksByUser(final ZonedDateTime validatedDate, final Integer userId);
+    List<PersistedTask> findValidTasksForUser(final ZonedDateTime validatedDate, final Integer userId);
 
     default PersistedTask getById(final Integer id) {
         return findById(id)

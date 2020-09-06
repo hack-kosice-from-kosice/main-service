@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.time.ZonedDateTime;
 import java.util.Objects;
 import java.util.Optional;
 
@@ -59,7 +60,8 @@ public class DailyTasksController {
 
         log.info("action=performActionOnTask userId={} taskId={} action={}", userId, taskId, taskAction.getAction().name());
 
-        final Optional<PersistedTask> taskToPerformAction = tasksFetchOperations.findByUser(userId).stream()
+        final Optional<PersistedTask> taskToPerformAction = tasksFetchOperations.findValidTasksForUser(ZonedDateTime.now(), userId)
+                .stream()
                 .filter(task -> task.id().equals(taskId))
                 .findFirst();
 

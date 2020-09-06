@@ -33,7 +33,7 @@ public class TasksInMemoryRepository implements TasksFetchOperations, TasksPersi
     }
 
     @Override
-    public List<PersistedTask> findValidTasksByUser(final ZonedDateTime validatedDate, final Integer userId) {
+    public List<PersistedTask> findValidTasksForUser(final ZonedDateTime validatedDate, final Integer userId) {
         return findByUser(userId).stream()
                 .filter(task -> task.isValidFor(validatedDate))
                 .collect(Collectors.toList());

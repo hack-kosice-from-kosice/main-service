@@ -35,7 +35,7 @@ public class DefaultActualUserTasksRetriever implements ActualUserTasksRetriever
     public List<PersistedTask> retrieveActualUserTasks(final Integer userId) {
         final int requiredNumberOfDailyTasks = requiredNumberOfDailyTasksDetector.requiredNumberOfTasksPerDay(userId);
 
-        final List<PersistedTask> actuallyValidTasks = tasksFetchOperations.findValidTasksByUser(ZonedDateTime.now(), userId);
+        final List<PersistedTask> actuallyValidTasks = tasksFetchOperations.findValidTasksForUser(ZonedDateTime.now(), userId);
 
         if (actuallyValidTasks.size() >= requiredNumberOfDailyTasks) {
             return actuallyValidTasks;
