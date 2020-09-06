@@ -5,6 +5,7 @@ import io.sleepit.init.db.inmemory.SkillsInMemoryRepository;
 import io.sleepit.init.db.inmemory.SleepingStatisticsInMemoryRepository;
 import io.sleepit.init.db.inmemory.TasksInMemoryRepository;
 import io.sleepit.sleepingstats.model.DefaultSleepingStatistic;
+import io.sleepit.sleepingstats.model.SleepingStatistic;
 import io.sleepit.sleepingstats.repository.SleepingStatisticsPersistOperations;
 import io.sleepit.tasks.service.generator.TasksGenerator;
 import org.springframework.boot.CommandLineRunner;
@@ -14,6 +15,8 @@ import org.springframework.context.annotation.Configuration;
 import java.time.ZonedDateTime;
 import java.util.Random;
 import java.util.stream.IntStream;
+
+import static io.sleepit.sleepingstats.model.SleepingStatistic.Category.*;
 
 @Configuration
 public class DbComponentConfiguration {
@@ -51,12 +54,14 @@ public class DbComponentConfiguration {
     }
 
     @Bean
-    public CommandLineRunner fillDbWithSleepingStatistics(final SleepingStatisticsPersistOperations sleepingStatisticsPersistOperations) {
+    public CommandLineRunner fillDbWithSleepingOverallStatistics(final SleepingStatisticsPersistOperations sleepingStatisticsPersistOperations) {
         return args -> IntStream.range(0, 100)
                 .mapToObj(i -> new DefaultSleepingStatistic(
-                        123,
-                        new Random().nextInt(5),
-                        ZonedDateTime.now().minusDays(i))
+                                123,
+                                new Random().nextInt(10),
+                                ZonedDateTime.now().minusDays(i),
+                                OVERALL_STATISTIC
+                        )
                 ).forEach(sleepingStatisticsPersistOperations::create);
     }
 

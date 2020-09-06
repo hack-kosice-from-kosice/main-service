@@ -10,4 +10,10 @@ public interface SleepingStatistic {
 
     ZonedDateTime date();
 
+    Category category();
+
+    enum Category {
+        OVERALL_STATISTIC
+    }
+
 }

@@ -1,9 +1,10 @@
 package io.sleepit.rest.controller;
 
-import io.sleepit.rest.dto.CreateSleepingStatisticRequestDTO;
+import io.sleepit.rest.dto.SleepingReviewDTO;
 import io.sleepit.rest.dto.SleepingStatisticDTO;
 import io.sleepit.rest.dto.SleepingStatisticsDTO;
 import io.sleepit.sleepingstats.model.DefaultSleepingStatistic;
+import io.sleepit.sleepingstats.model.SleepingStatistic;
 import io.sleepit.sleepingstats.repository.SleepingStatisticsFetchOperations;
 import io.sleepit.sleepingstats.repository.SleepingStatisticsPersistOperations;
 import org.springframework.http.ResponseEntity;
@@ -17,6 +18,8 @@ import java.time.ZonedDateTime;
 import java.util.Comparator;
 import java.util.Objects;
 import java.util.stream.Collectors;
+
+import static io.sleepit.sleepingstats.model.SleepingStatistic.Category.*;
 
 @RestController
 public class SleepingStatisticsController {
@@ -33,15 +36,18 @@ public class SleepingStatisticsController {
     }
 
     @PostMapping("/users/{userId}/sleeping-stats")
-    public ResponseEntity<?> markSleepingStatistic(
+    public ResponseEntity<?> reviewSleeping(
             @PathVariable("userId") final Integer userId,
-            @RequestBody final CreateSleepingStatisticRequestDTO createSleepingStatisticRequestDTO) {
+            @RequestBody final SleepingReviewDTO sleepingReviewDTO) {
 
         sleepingStatisticsPersistOperations.create(
                 new DefaultSleepingStatistic(
                         userId,
-                        createSleepingStatisticRequestDTO.getValue(),
-                        ZonedDateTime.now()
+                        sleepingReviewDTO.getValue(),
+                        ZonedDateTime.now(),
+                        sleepingReviewDTO.getCategory()
+                                .map(SleepingStatistic.Category::valueOf)
+                                .orElse(OVERALL_STATISTIC)
                 )
         );
 

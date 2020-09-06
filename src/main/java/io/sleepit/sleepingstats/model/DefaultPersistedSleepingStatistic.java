@@ -33,4 +33,9 @@ public class DefaultPersistedSleepingStatistic implements PersistedSleepingStati
         return delegate.date();
     }
 
+    @Override
+    public Category category() {
+        return delegate.category();
+    }
+
 }
